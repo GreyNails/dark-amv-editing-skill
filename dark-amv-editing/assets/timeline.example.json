@@ -1,0 +1,34 @@
+{
+  "title": "原创占位文字的三镜头示例",
+  "example": {
+    "synthetic": true,
+    "note": "示意数据；路径、源时间与重音均为虚构，不是任何歌曲的实测分析，不包含可渲染媒体。"
+  },
+  "fps": 30,
+  "frames": 240,
+  "width": 1920,
+  "height": 1080,
+  "music": "media/music.wav",
+  "sources": [
+    {"id": "anime", "path": "media/anime.mp4", "duration": 120.0}
+  ],
+  "shots": [
+    {"id": "door", "source_id": "anime", "source_in": 10.0, "source_span": 2.0,
+      "start_frame": 0, "end_frame": 90, "description": "门与凝视：建立悬念",
+      "beat_frames": [30, 60]},
+    {"id": "impact", "source_id": "anime", "source_in": 30.0, "source_span": 1.5,
+      "start_frame": 90, "end_frame": 150, "description": "动作峰映射到镜头中点",
+      "ramp": [[0, 0], [0.5, 0.7], [1, 1]], "beat_frames": [30]},
+    {"id": "silence", "source_id": "anime", "source_in": 50.0, "source_span": 3.0,
+      "start_frame": 150, "end_frame": 240, "description": "空场：降低信息密度",
+      "beat_frames": []}
+  ],
+  "lyrics": [
+    {"id": "original-text-1", "shot_id": "door", "start": 0.7, "end": 2.6,
+      "text": "门后有回声", "pos": [0.75, 0.3], "beat_frames": [30, 60],
+      "entry_landing_frame": 30, "enter_duration": 0.3},
+    {"id": "original-text-2", "shot_id": "impact", "start": 3.8, "end": 4.8,
+      "text": "此刻醒来", "pos": [0.2, 0.7], "beat_frames": [120],
+      "entry_landing_frame": 120, "enter_duration": 0.2}
+  ]
+}

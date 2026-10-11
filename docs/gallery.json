@@ -1,0 +1,138 @@
+[
+  {
+    "file": "images/01-contour-type-comic.jpg",
+    "timestamp_seconds": 51.4,
+    "timestamp": "00:00:51.400",
+    "frame_index": 1542,
+    "source_version": "V3",
+    "title": "人物轮廓与后置大字",
+    "caption": "中央动画人物位于大字之前；两侧保留原彩漫画的线条、网点和色块，构成三层画面。",
+    "techniques": [
+      "人物蒙版",
+      "后置歌词",
+      "漫画拼贴"
+    ],
+    "width": 1280,
+    "height": 720,
+    "extraction": "成片实帧；仅等比缩放和JPEG编码，无重绘、重调色或新增叠加"
+  },
+  {
+    "file": "images/02-perspective-lyrics.jpg",
+    "timestamp_seconds": 114.5,
+    "timestamp": "00:01:54.500",
+    "frame_index": 3435,
+    "source_version": "V3",
+    "title": "贴合街道方向的空间歌词",
+    "caption": "文字沿街景的透视方向倾斜展开，红白字色对应暖色灯光，主体与文字分布在不同景深位置。",
+    "techniques": [
+      "透视文字",
+      "场景留白",
+      "暖色夜景"
+    ],
+    "width": 1280,
+    "height": 720,
+    "extraction": "成片实帧；仅等比缩放和JPEG编码，无重绘、重调色或新增叠加"
+  },
+  {
+    "file": "images/03-original-color-triptych.jpg",
+    "timestamp_seconds": 10.266667,
+    "timestamp": "00:00:10.267",
+    "frame_index": 308,
+    "source_version": "V3",
+    "title": "动画与原彩漫画三联画",
+    "caption": "动画面部居中，原彩漫画侧幅由斜线分隔；侧幅中的眼睛与中央人物视线形成重复。",
+    "techniques": [
+      "原彩漫画",
+      "三联画",
+      "斜切画格"
+    ],
+    "width": 1280,
+    "height": 720,
+    "extraction": "成片实帧；仅等比缩放和JPEG编码，无重绘、重调色或新增叠加"
+  },
+  {
+    "file": "images/04-focus-mask-detail.jpg",
+    "timestamp_seconds": 6.566667,
+    "timestamp": "00:00:06.567",
+    "frame_index": 197,
+    "source_version": "V3",
+    "title": "局部放大与竖排文字",
+    "caption": "主画面保留完整面部，右下红框展示口部与手势的局部放大，竖向文字落在左侧留白。",
+    "techniques": [
+      "局部蒙版",
+      "画中画",
+      "竖排歌词"
+    ],
+    "width": 1280,
+    "height": 720,
+    "extraction": "成片实帧；仅等比缩放和JPEG编码，无重绘、重调色或新增叠加"
+  },
+  {
+    "file": "images/05-foreground-over-bars.jpg",
+    "timestamp_seconds": 32.466667,
+    "timestamp": "00:00:32.467",
+    "frame_index": 974,
+    "source_version": "V3",
+    "title": "人物越过宽银幕黑边",
+    "caption": "背景收窄为横向画带，人物头部和身体保留在黑边前方，左侧文字与视线位置保持距离。",
+    "techniques": [
+      "人物轮廓",
+      "动态画幅",
+      "主体越框"
+    ],
+    "width": 1280,
+    "height": 720,
+    "extraction": "成片实帧；仅等比缩放和JPEG编码，无重绘、重调色或新增叠加"
+  },
+  {
+    "file": "images/06-cold-shadow-portrait.jpg",
+    "timestamp_seconds": 117.5,
+    "timestamp": "00:01:57.500",
+    "frame_index": 3525,
+    "source_version": "V3",
+    "title": "冷色暗部与眼部细节",
+    "caption": "蓝色背景光勾出面部轮廓；黑发和眼罩保持暗色，眼睛仍有细节，短文字放在左下空处。",
+    "techniques": [
+      "暗黑调色",
+      "明暗分离",
+      "面部留白"
+    ],
+    "width": 1280,
+    "height": 720,
+    "extraction": "成片实帧；仅等比缩放和JPEG编码，无重绘、重调色或新增叠加"
+  },
+  {
+    "file": "images/07-skewed-frame.jpg",
+    "timestamp_seconds": 164.366667,
+    "timestamp": "00:02:44.367",
+    "frame_index": 4931,
+    "source_version": "V3",
+    "title": "斜切窗口中的冷蓝空间",
+    "caption": "水下画面被两条斜边围成窗口，浅色边线与黑底明确分隔画幅，文字沿左上区域排布。",
+    "techniques": [
+      "几何裁切",
+      "斜向窗口",
+      "冷蓝调色"
+    ],
+    "width": 1280,
+    "height": 720,
+    "extraction": "成片实帧；仅等比缩放和JPEG编码，无重绘、重调色或新增叠加"
+  },
+  {
+    "file": "images/08-flower-endcard.jpg",
+    "timestamp_seconds": 169.666667,
+    "timestamp": "00:02:49.667",
+    "frame_index": 5090,
+    "source_version": "V3",
+    "title": "花朵与漫画侧幅收尾",
+    "caption": "红花位于中央，左右漫画侧幅保持纸面纹理；中部标题与红色花朵构成收尾视觉重心。",
+    "techniques": [
+      "漫画侧幅",
+      "主色呼应",
+      "叙事收尾"
+    ],
+    "width": 1280,
+    "height": 720,
+    "extraction": "成片实帧；仅等比缩放和JPEG编码，无重绘、重调色或新增叠加"
+  }
+]

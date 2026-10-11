@@ -1,0 +1,4 @@
+interface:
+  display_name: "暗黑动漫混剪"
+  short_description: "把叙事卡点、空间歌词、原彩漫画与动态蒙版组织成可审片的动漫混剪"
+  default_prompt: "使用 $dark-amv-editing，参考我提供的分析，用指定音乐和动漫/彩漫素材制作暗黑混剪，保留旧版并交付过程文件与质检结果。"

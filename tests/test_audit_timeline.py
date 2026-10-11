@@ -201,6 +201,14 @@ class TimelineAuditTests(unittest.TestCase):
             path.unlink()
             self.assertIn("source_file_missing", codes(MODULE.audit_timeline(example(), project_root=root, check_files=True)))
 
+    def test_unresolvable_home_and_extreme_bad_frame_report_without_exception(self):
+        data = example()
+        data["sources"][0]["path"] = "~amv_audit_nonexistent_user_739192/clip.mp4"
+        self.assertIn("source_path", codes(MODULE.audit_timeline(data)))
+        data = example()
+        data["shots"][0]["end_frame"] = 10 ** 500
+        self.assertIn("shot_frame_range", codes(MODULE.audit_timeline(data)))
+
 
 class TimelineCliTests(unittest.TestCase):
     def run_cli(self, *args):

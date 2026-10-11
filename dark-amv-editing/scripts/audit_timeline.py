@@ -170,7 +170,10 @@ def audit_timeline(data, project_root=None, check_files=False, forbid_reuse=Fals
     Adjacent source windows are allowed. Relative paths use project_root, or cwd
     for this Python API (the CLI instead defaults to the timeline's directory).
     """
-    a = _Audit(project_root, check_files, forbid_reuse)
+    try:
+        a = _Audit(project_root, check_files, forbid_reuse)
+    except (OSError, ValueError, TypeError, RuntimeError) as exc:
+        return _input_error("project_root_path", "project_root", str(exc))
     if not isinstance(data, dict):
         a.issue("root_type", "$", "Expected a JSON object at the document root.")
         return _finish(a.report)
@@ -205,18 +208,22 @@ def audit_timeline(data, project_root=None, check_files=False, forbid_reuse=Fals
         if not isinstance(raw_path, str) or not raw_path.strip() or "\x00" in raw_path:
             a.issue("path_type", p + ".path", "Expected a nonempty local file path without NUL characters.")
         else:
-            path = Path(raw_path).expanduser()
-            if not path.is_absolute():
-                path = a.root / path
-            canonical = os.path.normcase(os.path.abspath(path))
-            if check_files:
-                a.report["checks"]["files_checked"] += 1
-                try:
-                    exists = path.is_file()
-                except OSError:
-                    exists = False
-                if not exists:
-                    a.issue("source_file_missing", p + ".path", f"Source is not an accessible file: {path}")
+            try:
+                path = Path(raw_path).expanduser()
+                if not path.is_absolute():
+                    path = a.root / path
+                canonical = os.path.normcase(os.path.abspath(path))
+            except (OSError, ValueError, RuntimeError) as exc:
+                a.issue("source_path", p + ".path", str(exc))
+            else:
+                if check_files:
+                    a.report["checks"]["files_checked"] += 1
+                    try:
+                        exists = path.is_file()
+                    except OSError:
+                        exists = False
+                    if not exists:
+                        a.issue("source_file_missing", p + ".path", f"Source is not an accessible file: {path}")
         if sid is not None:
             sources[sid] = {"duration": length, "canonical_path": canonical}
 
@@ -295,7 +302,7 @@ def audit_timeline(data, project_root=None, check_files=False, forbid_reuse=Fals
             shot = shots.get(sid) if isinstance(sid, str) else None
             if shot is None:
                 a.issue("unknown_shot", p + ".shot_id", "Expected the ID of a declared valid shot.")
-            elif start is not None and end is not None and fps is not None and duration is not None and shot["start"] is not None and shot["end"] is not None:
+            elif start is not None and end is not None and fps is not None and duration is not None and shot["start"] is not None and shot["end"] is not None and 0 <= shot["start"] < shot["end"] <= total:
                 if start < shot["start"] / fps - EPS or end > shot["end"] / fps + EPS:
                     a.issue("lyric_shot_range", p, "Text display extends outside its bound shot; split a cross-shot phrase into layout segments or omit shot_id for intentionally unbound text.")
         if "beat_frames" in lyric:
@@ -372,9 +379,14 @@ def main(argv=None):
     parser.add_argument("--forbid-reuse", action="store_true", help="Treat overlapping source windows as errors instead of warnings")
     parser.add_argument("--output", help="Also save the JSON report to this file")
     args = parser.parse_args(argv)
-    timeline = Path(args.timeline).expanduser()
-    output = Path(args.output).expanduser() if args.output else None
-    if output is not None and output.resolve() == timeline.resolve():
+    try:
+        timeline = Path(args.timeline).expanduser()
+        output = Path(args.output).expanduser() if args.output else None
+        conflict = output is not None and output.resolve() == timeline.resolve()
+    except (OSError, ValueError, RuntimeError) as exc:
+        print(json.dumps(_input_error("cli_path", "$", str(exc)), ensure_ascii=False))
+        return 2
+    if conflict:
         print(json.dumps(_input_error("output_conflict", args.output, "Report output must not overwrite the input timeline."), ensure_ascii=False))
         return 2
     try:
